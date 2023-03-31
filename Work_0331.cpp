@@ -1,39 +1,79 @@
 #include <iostream>
 
+
 using namespace std;
 
 
 int main()
 {
-	int Plus = 0;
-	int Result = 0;
-
-	for (int i = 0; i <= 100; i++)
+	int Map[10][10] = 
 	{
-		if (i % 2 == 0)
-		{
-			Plus += i;
-		}
-	}
-	cout << Plus << endl;
+		{1,1,1,1,1,1,1,1,1,1},
+		{1,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,1},
+		{1,1,1,1,1,1,1,1,1,1}
+	};
+
+	int PlayerX = 1;
+	int PlayerY = 1;
+	bool bIsRunning = true;
 
 
-	for (int i = 1; i <= 5; i++)
+	while (true) //GameLoop
 	{
-		for (int j = 0; j < i; j++)
+		//Frame
+		//Input();
+		 char Key;
+		 cin >> Key;
+
+		//Tick();
+		 if (Key == 'd')
+		 {
+			 PlayerX++;
+		 }
+		 else if (Key == 'a')
+		 {
+			 PlayerX--;
+		 }
+		 else if (Key == 'w')
+		 {
+			 PlayerY++;
+		 }
+		 else if (Key == 's')
+		 {
+			 PlayerY--;
+		 }
+		 else if (Key == 'q')
+		 {
+			 bIsRunning = false;
+		 }
+
+		//Render();
+		 system("cls");
+
+		for (int Y = 0; Y < 10; ++Y)
 		{
-			cout << '*';
+			for (int X = 0; X < 10; ++X)
+				if (PlayerX == 1 && PlayerY == 1)
+				{
+					cout << "P";
+				}
+			else if (Map[Y][X] == 1)
+			{
+				cout << "#";
 			}
-		cout << endl;
+			else if (Map[Y][X] == 0)
+			{
+				cout << "  ";
+			}
+			cout << endl;
+		}		
 	}
-
-
-	int Number = 111;
-	int* P = &Number;
-
-	cout << *P << endl;
-	cout << P << endl;
-
-
 	return 0;
 }
